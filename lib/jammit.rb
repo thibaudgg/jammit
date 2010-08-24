@@ -158,7 +158,9 @@ module Jammit
   # complain loudly.
   def self.disable_compression
     @compress_assets = false
-    warn("Asset compression disabled -- Java unavailable.")
+    if Rails.env.development?
+      warn("Asset compression disabled -- Java unavailable.")
+    end
   end
 
   # Jammit 0.5+ no longer supports separate template packages.
